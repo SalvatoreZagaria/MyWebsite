@@ -1,0 +1,7 @@
+boto==2.49.0
+Django==2.1.5
+pip==18.1
+pytz==2018.9
+setuptools==40.6.3
+sqlparse==0.3.0
+wheel==0.32.3
