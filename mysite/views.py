@@ -9,11 +9,11 @@ def index(request):
 def download(request):
     from django.conf import settings
     import os
-    file_path = os.path.join(settings.BASE_DIR, 'mysite', 'static', 'mysite', 'ecv_Salvatore_Zagaria.pdf')
+    file_path = os.path.join(settings.BASE_DIR, 'mysite', 'static', 'mysite', 'salvatore_zagaria_cv.pdf')
     if os.path.exists(file_path):
         with open(file_path, 'rb') as fh:
             response = HttpResponse(fh.read(), content_type="application/pdf")
-            response['Content-Disposition'] = 'attachment; filename=resume.pdf'
+            response['Content-Disposition'] = 'attachment; filename=salvatore_zagaria_resume.pdf'
             return response
     raise HttpResponseServerError
 
@@ -41,7 +41,7 @@ def send_email(request):
                 try:
                     server = smtplib.SMTP('smtp.gmail.com:587')
                     server.starttls()
-                    server.login('zagaria.services@gmail.com', S3Connection(os.environ['passw']))
+                    server.login('zagaria.services@gmail.com', os.environ['PASSW'])
                     server.sendmail(email,
                                     toaddr,
                                     msg_full)
