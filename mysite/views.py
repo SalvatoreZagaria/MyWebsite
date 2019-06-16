@@ -41,7 +41,8 @@ def send_email(request):
                 try:
                     server = smtplib.SMTP('smtp.gmail.com:587')
                     server.starttls()
-                    server.login('zagaria.services@gmail.com', os.environ['PASSW'])
+                    server.login('zagaria.services@gmail.com', S3Connection(os.environ['PASSW']))
+                    # server.login('zagaria.services@gmail.com', os.environ['PASSW'])
                     server.sendmail(email,
                                     toaddr,
                                     msg_full)
