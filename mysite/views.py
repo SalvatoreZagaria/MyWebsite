@@ -17,13 +17,15 @@ def download(request):
             return response
     raise HttpResponseServerError
 
-
+'''
 def send_email(request):
     import re
     import smtplib
     from email.mime.text import MIMEText
-    from boto.s3.connection import S3Connection
+    #from boto.s3.connection import S3Connection
     import os
+    #print(1)
+    #print(S3Connection(os.environ['PASSW']))
     toaddr = ['s.zagaria9@gmail.com', 's.zaga@hotmail.it']
     email_regex = re.compile(r'^.+@([?)[a-zA-Z0-9-.]+.([a-zA-Z]{2,3}|[0-9]{1,3})(]?)$)')
     if request.method == 'POST':
@@ -41,8 +43,8 @@ def send_email(request):
                 try:
                     server = smtplib.SMTP('smtp.gmail.com:587')
                     server.starttls()
-                    server.login('zagaria.services@gmail.com', S3Connection(os.environ['PASSW']))
-                    # server.login('zagaria.services@gmail.com', os.environ['PASSW'])
+                    #server.login('zagaria.services@gmail.com', S3Connection(os.environ['PASSW']))
+                    server.login('zagaria.services@gmail.com', os.environ['PASSW'])
                     server.sendmail(email,
                                     toaddr,
                                     msg_full)
@@ -69,3 +71,4 @@ def send_email(request):
             response.status_code = 400
             response.reason_phrase = error
             return response
+'''
